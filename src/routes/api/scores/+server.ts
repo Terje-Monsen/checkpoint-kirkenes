@@ -1,16 +1,13 @@
+// src/routes/api/scores/+server.ts
 import { json } from '@sveltejs/kit';
-import { loadBoard } from '$lib/stores/leaderboard'; // din eksisterende
-export const GET = async () => json(await loadBoard());
+import type { RequestHandler } from './$types';
 
-
-type Row = { name: string; score: number; at: string };
-
-// TODO: bytt ut med din egentlige kilde (fil, DB eller $lib/stores/leaderboard)
-const demo: Row[] = [
-  { name: 'Spiller1', score: 920, at: new Date().toISOString() },
-  { name: 'Spiller2', score: 875, at: new Date().toISOString() }
+const demo = [
+  { name: 'Anna', score: 820 },
+  { name: 'Per', score: 760 },
+  { name: 'Mia', score: 710 }
 ];
 
-export const GET = async () => {
+export const GET: RequestHandler = async () => {
   return json(demo);
 };
