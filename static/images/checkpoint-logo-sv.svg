@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 431.9 158.25">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-2 {
+        font-family: Nunito-Bold, Nunito;
+        font-size: 70px;
+        font-variation-settings: 'wght' 700;
+        font-weight: 700;
+        letter-spacing: .02em;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #0e487a;
+      }
+
+      .cls-4 {
+        font-family: Nunito-Medium, Nunito;
+        font-size: 40px;
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #f39a4d;
+      }
+
+      .cls-6 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.01em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path class="cls-3" d="M431.9,51.77c0,12.07-21.85,35.61-21.85,35.61,0,0-21.85-23.54-21.85-35.61s9.78-21.85,21.85-21.85,21.85,9.78,21.85,21.85Z"/>
+    <text class="cls-4" transform="translate(60.59 107.38)"><tspan x="0" y="0">SØ</tspan><tspan class="cls-7" x="55.56" y="0">R</tspan><tspan class="cls-6" x="81.8" y="0">-</tspan><tspan class="cls-1" x="96.96" y="0">V</tspan><tspan x="122.48" y="0">A</tspan><tspan class="cls-8" x="151.8" y="0">R</tspan><tspan x="178.24" y="0">ANGER</tspan></text>
+    <text class="cls-2" transform="translate(0 59.67)"><tspan x="0" y="0">Checkpoint</tspan></text>
+    <circle class="cls-5" cx="410.06" cy="52.92" r="8.42"/>
+  </g>
+</svg>
