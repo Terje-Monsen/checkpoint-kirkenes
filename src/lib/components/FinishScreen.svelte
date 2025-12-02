@@ -90,15 +90,37 @@
 
 
 
-  function submit() {
+  async function submit() {
     if (!valid.ok || entryTs == null) return;
     const safe = name.trim();
+
+    // Oppdatér lokal leaderboard (som før)
     const newRank = renameEntry(entryTs, safe);
     board = loadBoard();
     rank = newRank ?? rank;
+
+    // Lagre til Supabase via API
+    try {
+      await fetch('/api/scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: safe || baseName,   // fall-back om noe rart skjer
+          score: finalScore
+          // ev. utvid med correctCount, totalQuestions, språk, osv.
+        })
+      });
+    } catch (e) {
+      console.error('Klarte ikke å lagre til Supabase', e);
+      // Du kan evt. vise en liten feilmelding her
+    }
+
     saved = true;
     burstConfetti();
   }
+
 
   // Ordinal/plassering
   function formatRank(r?: number | null) {
