@@ -104,7 +104,6 @@ export const steps: Step[] = [
 
 
 
-
   {
     type: 'mcq-image',
     id: 'GRENSESTOLPE',
