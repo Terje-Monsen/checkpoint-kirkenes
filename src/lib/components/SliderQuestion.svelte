@@ -150,8 +150,7 @@
             class="correct-pin"
             style={`left:${correctPct}%;`}
           >
-          <!--   <img src="/images/pin-hotspot.png" alt="Correct pin" class="pin-img" /> -->
-             <div class="pin-img"></div>
+            <div class="pin-img"></div>
             <div class="val">{correct}{prefix}</div>
           </div>
         {/if}
@@ -288,35 +287,41 @@
 .correct-pin .pin-img {
   position: relative;
   left: 54%;
-  xtransform-origin: 50% 100%;
-  margin-left:-2px;
+  margin-left: -2px;
   width: 3px;
   height: 1em;
   display: block;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
-  background:rgb(0, 190, 32);
-  
+  background: rgb(0, 190, 32);
 }
 .correct-pin .val {
-  margin-top:.2.em;
+  margin-top: .2em;
   font-size: 1.2rem;
   font-weight: 800;
   color: #087b33;
 }
 
-/* Range (input) */
+/* Range (input) – stor touch-hitbox og god drag på mobil */
 .range {
-  -webkit-appearance: none; appearance: none;
-  background: transparent; outline: none;
-  width: 100%; height: 60px;
-  position: absolute; top: 100%; left: 0; transform: translateY(-50%);
-  cursor: pointer; z-index: 3;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  height: 80px;                  /* stor hitbox */
+  position: absolute;
+  top: 50%;                      /* sentrer over track */
+  left: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 3;
+  touch-action: none;            /* gjør horizontal drag mer responsiv */
 }
 
 /* Kun for Firefox */
 @supports (-moz-appearance: none) {
   .range {
-    top: 40%;
+    top: 50%;
   }
 }
 .range:disabled { cursor: default; }
@@ -326,45 +331,59 @@
 .range::-moz-range-track { background: transparent; height: 48px; }
 .range::-moz-range-progress { background: transparent; }
 
-/* Thumb input-range*/
+/* Default (desktop) – slank, men grei å treffe med mus */
 .range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 3px; height: 32px;
-  outline: 5px solid #389af1 ;
+  width: 12px;
+  height: 36px;
+  outline: 4px solid #389af1;
   background: #389af1;
-  border-radius:3px;
-  border-bottom-left-radius:6px;
-  border-bottom-right-radius:6px;
+  border-radius: 999px;
   box-shadow: 0 3px 6px rgba(0,0,0,.25);
   transition: transform .1s ease;
 }
 
 .range:disabled::-webkit-slider-thumb {
-  outline: 2px solid #616161 ;
+  outline: 2px solid #616161;
   background: #616161;
-  border-radius:3px;
 }
 
-/* --- FIREFOX --- */
 .range::-moz-range-thumb {
-  width: 3px;
-  height: 32px;
+  width: 12px;
+  height: 36px;
   background: #389af1;
-  border: none;
-  border-radius: 3px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  transition: transform 0.1s ease;
-  outline: 5px solid #389af1;
+  border-radius: 999px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.25);
+  outline: 4px solid #389af1;
 }
+
+/* TOUCH / MOBIL: mye større tommel (bedre å treffe) */
+@media (pointer: coarse) {
+  .slider-wrap {
+    margin-top: 3em;
+    margin-bottom: 2.5em;
+  }
+
+  .range {
+    height: 96px; /* enda større touch-flate */
+  }
+
+  .range::-webkit-slider-thumb {
+    width: 28px;
+    height: 48px;
+    outline-width: 6px;
+  }
+
+  .range::-moz-range-thumb {
+    width: 28px;
+    height: 48px;
+    outline-width: 6px;
+  }
+}
+
 .range:disabled::-moz-range-thumb {
   background: #616161;
   outline: 2px solid #616161;
-}
-.range::-moz-range-track {
-  background: transparent;
-  border: none;
 }
 
 /* Neste-knapp */
@@ -396,12 +415,15 @@
 .next-btn:hover { background: var(--brand-bg-hover); transform: translateY(-2px); }
 .next-btn:active { transform: scale(.98); }
 
-.value-readout { font-size: 2em; line-height: 1.1; margin-top:1.8em;
-  margin-left:auto;
-  margin-right:auto;
-  width:5em;
-  padding:.5em;
-  background:#efefff;
+.value-readout {
+  font-size: 2em;
+  line-height: 1.1;
+  margin-top: 1.8em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5em;
+  padding: .5em;
+  background: #efefff;
   border: solid 1px #d3d3d3;
 }
 
