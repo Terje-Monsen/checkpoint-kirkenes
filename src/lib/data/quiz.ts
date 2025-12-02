@@ -82,6 +82,30 @@ export const steps: Step[] = [
   },
 
   {
+  type: 'mcq',
+  id: 'BJORNTYPE-KKN-AIRPORT',
+  text: {
+    no: 'Hvilken type bjørn står på bagasjekarusellen på Kirkenes lufthavn?',
+    en: 'What type of bear is displayed on the baggage carousel at Kirkenes Airport?'
+  },
+  options: {
+    no: ['Isbjørn', 'Brunbjørn', 'Svartbjørn', 'Panda'],
+    en: ['Polar bear', 'Brown bear', 'Black bear', 'Panda']
+  },
+  correct: { 
+    no: ['Brunbjørn'], 
+    en: ['Brown bear'] 
+  },
+  random: true,
+  maxTime: 30,
+  maxPoint: 100,
+  minPoint: 50
+},
+
+
+
+
+  {
     type: 'mcq-image',
     id: 'GRENSESTOLPE',
     text: {
