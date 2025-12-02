@@ -137,30 +137,30 @@
 >
   <div class="w-full max-w-[560px]">
     <!-- HEADER -->
-    <div
+    <div style="scale:.9;color:white;background:#203a66;border:solid 8px #203a66;padding:0;border-radius:1em; "
       class="grid grid-cols-3 items-end justify-items-center text-[#203a66] animate-fadein-up m-[1em]"
     >
-      <div class="text-center">
-        <div class="text-[.8em] font-semibold uppercase tracking-wide">
+      <div class="text-center" >
+        <div class="text-[1em] font-semibold uppercase tracking-wide">
           {$dict['header.question']}
         </div>
-        <div class="text-[1.6em] font-extrabold tabular-nums">{index}/{total}</div>
+        <div class="text-[2em] font-extrabold tabular-nums">{index}/{total}</div>
       </div>
 
       <div class="text-center">
-        <div class="text-[.8em] font-semibold uppercase tracking-wide">
+        <div class="text-[1em] font-semibold uppercase tracking-wide">
           {$dict['header.time']}
         </div>
-        <div class="text-[1.6em] font-extrabold tabular-nums">
+        <div class="text-[2em] font-extrabold tabular-nums">
           {Math.max(0, Math.ceil(maxTime - elapsed))}
         </div>
       </div>
 
       <div class="text-center">
-        <div class="text-[.8em] font-semibold uppercase tracking-wide">
+        <div class="text-[1em] font-semibold uppercase tracking-wide">
           {$dict['header.score']}
         </div>
-        <div class="text-[1.6em] font-extrabold tabular-nums">{visibleScore}</div>
+        <div class="text-[2em] font-extrabold tabular-nums">{visibleScore}</div>
       </div>
     </div>
 
