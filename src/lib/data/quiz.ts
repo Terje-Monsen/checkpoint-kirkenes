@@ -90,8 +90,8 @@ export const steps: Step[] = [
     type: 'video',
     id: 'VIDOE-KIRKENES',
     src: {
-      no: '/video/kirkenes-no.mp4',
-      en: '/video/kirkenes-en.mp4'
+      no: '/video/kirkenes-no-low.mp4',
+      en: '/video/kirkenes-en-low.mp4'
     },
     autoplay: true
   },
@@ -206,8 +206,8 @@ export const steps: Step[] = [
     type: 'video',
     id: 'VIDOE-HURTIGRUTEN',
     src: {
-      no: '/video/hurtigruten-no.mp4',
-      en: '/video/hurtigruten-en.mp4'
+      no: '/video/hurtigruten-no-low.mp4',
+      en: '/video/hurtigruten-en-low.mp4'
     },
     autoplay: true
   },
