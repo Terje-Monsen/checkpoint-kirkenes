@@ -25,7 +25,7 @@ export default {
   'home.yourScore': 'Your score',
   'home.submit': 'Submit',
   'home.name': 'Name',
-  'home.info': 'Take our fun quiz while you wait for your bag!',
+  'home.info': 'Try our fun quiz while you wait for your bag!',
 
     // Finish
   'finish.title': 'Checkpoint complete!',
