@@ -132,8 +132,29 @@
       {text[$lang]}
     </h2>
 
-    <!-- SLIDER + OVERLAYS -->
+    <!-- SLIDER + VALUE + BADGE -->
     <div class="mt-6 px-4">
+
+      <!-- Verdi over slider + badge i hjørnet -->
+      <div class="value-wrap text-center mt-2">
+        <div class="value-box">
+          <div class="value-readout text-center mt-2 font-semibold">
+            {value}{prefix}
+          </div>
+
+          {#if finished}
+            <div class="score-badge-wrap">
+              <span
+                class="badge {roundScore > 0 ? 'good' : 'bad'} {finished ? 'show' : ''}"
+                aria-hidden={!finished}
+              >
+                +{finished ? roundScore : 0}
+              </span>
+            </div>
+          {/if}
+        </div>
+      </div>
+
       <div class="slider-wrap">
         <!-- Track -->
         <div class="track"></div>
@@ -150,23 +171,9 @@
             class="correct-pin"
             style={`left:${correctPct}%;`}
           >
-            <div class="pin-img"></div>
-            <div class="val">{correct}{prefix}</div>
-          </div>
-        {/if}
-
-        <!-- POENG-BADGE OVER SLIDER-MARKØR -->
-        {#if finished}
-          <div
-            class="score-badge-wrap"
-            style={`left:${userPct}%;`}
-          >
-            <span
-              class="badge {roundScore > 0 ? 'good' : 'bad'} {finished ? 'show' : ''}"
-              aria-hidden={!finished}
-            >
-              +{finished ? roundScore : 0}
-            </span>
+          <div class="val">{correct}{prefix}</div>  
+          <div class="pin-img"></div>
+            
           </div>
         {/if}
 
@@ -181,11 +188,6 @@
           class={`range ${finished ? 'range--finished' : ''}`}
           aria-label="slider"
         />
-      </div>
-
-      <!-- Verdi under slider -->
-      <div class="value-wrap text-center mt-2">
-        <div class="value-readout text-center mt-2 font-semibold">{value}{prefix}</div>
       </div>
 
       <!-- Submit -->
@@ -259,6 +261,7 @@
   position: absolute;
   z-index: 2;
   pointer-events: none;
+  top:-46px;
 }
 
 /* Toleransebånd med gradient */
@@ -343,6 +346,7 @@
   border-bottom-right-radius:6px;
   box-shadow: 0 3px 6px rgba(0,0,0,.25);
   transition: transform .1s ease;
+  margin-top:.5em;
 }
 
 .range:disabled::-webkit-slider-thumb {
@@ -388,12 +392,18 @@
     width: 28px;
     height: 48px;
     outline-width: 6px;
+    margin-top:-.2em;
   }
 
   .range::-moz-range-thumb {
     width: 28px;
     height: 48px;
     outline-width: 6px;
+    margin-top:-.2em;
+  }
+
+  .range:disabled::-webkit-slider-thumb {
+    margin-top:.5em;
   }
 }
 
@@ -426,10 +436,19 @@
 .next-btn:hover { background: var(--brand-bg-hover); transform: translateY(-2px); }
 .next-btn:active { transform: scale(.98); }
 
+.value-wrap {
+  text-align:center;
+}
+
+.value-box {
+  display:inline-block;
+  position:relative;
+}
+
 .value-readout {
   font-size: 2em;
   line-height: 1.1;
-  margin-top: 1.8em;
+  margin-top: .5em;
   margin-left: auto;
   margin-right: auto;
   width: 5em;
@@ -438,11 +457,11 @@
   border: solid 1px #d3d3d3;
 }
 
-/* Wrapper som plasserer badgen over slider-markøren */
+/* Badge plassert i øvre høyre hjørne av value-readout */
 .score-badge-wrap {
   position: absolute;
-  bottom: 100%;
-  transform: translate(-50%, -0.8rem);
+  top: 0;
+  right: -0.6rem;
   z-index: 5;
   pointer-events: none;
 }
@@ -486,7 +505,7 @@
   color: #203a66;
 }
 
-/* 👇 NYTT: gjør slider-pin smalere når finished */
+/* Smalere pin etter finished – din eksisterende tweak */
 .range.range--finished:disabled::-webkit-slider-thumb {
   width: 6px;
   height: 28px;
