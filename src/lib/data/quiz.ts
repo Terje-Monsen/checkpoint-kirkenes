@@ -230,9 +230,6 @@ export const steps: Step[] = [
   maxPoint: 100
 },
   
-
-  
-  
   {
   type: 'slider',
   id: 'NORGE_RUSSLAND_GRENSE',
@@ -334,6 +331,23 @@ export const steps: Step[] = [
     minPoint: 50
   },
 
+
+{
+  type: 'hotspot',
+  id: 'HVOR-ER-BUGOYNES',
+  text: {
+    no: 'Idylliske Bugøynes er verdt et besøk, men hvor på kartet finner du bygden?',
+    en: 'Bugøynes is a charming village worth a visit, but where is it located on the map?'
+  },
+  image: '/images/map-finnmark.png',
+  pin: '/images/pin-hotspot.png',
+  // Omtrentlige koordinater – justér hvis kartet ditt er annerledes
+  correct: { x: 56, y: 10, radiusInner: 3, radiusOuter: 7 },
+  maxTime: 60,
+  maxPoint: 100
+},
+
+
   {
     type: 'mcq-image',
     id: 'BUGOYNES_KONGEKRABBE',
@@ -352,26 +366,6 @@ export const steps: Step[] = [
     maxPoint: 100,
     minPoint: 50
   },
-
-  {
-    type: 'mcq-image',
-    id: 'BUGOYNES_KONGEKRABBE',
-    text: {
-      no: 'Hvilket dyr er Bugøynes spesielt kjent for i dag?',
-      en: 'Which animal is Bugøynes especially known for today?'
-    },
-    options: {
-      no: ['bug-seal.png', 'bug-bear.png', 'bug-crab.png', 'bug-rain.png'],
-      en: ['bug-seal.png', 'bug-bear.png', 'bug-crab.png', 'bug-rain.png'],
-    },
-    correct: { no: ['bug-crab.png'], en: ['bug-crab.png'] },
-    imagePath: '/images/bugoynes/',   
-    random: true,
-    maxTime: 30,
-    maxPoint: 100,
-    minPoint: 50
-  },
-
 
 
 
