@@ -221,7 +221,7 @@
   <div class="w-full max-w-[560px]">
 
     <!-- HEADER -->
-    <div class="grid grid-cols-3 items-end justify-items-center text-[#203a66] animate-fadein-up m-[1em]">
+    <div class="grid grid-cols-3 items-end justify-items-center text-[#203a66] animate-fadein-up m-[1em]" style="scale:.9;color:white;background:#203a66;border:solid 8px #203a66;padding:0;border-radius:1em; ">
       <div class="text-center">
         <div class="text-[1em] font-semibold uppercase tracking-wide">{$dict['header.question']}</div>
         <div class="text-[2em] font-extrabold tabular-nums">{index}/{total}</div>

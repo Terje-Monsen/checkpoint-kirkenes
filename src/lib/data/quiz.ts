@@ -352,7 +352,7 @@ export const steps: Step[] = [
     type: 'mcq-image',
     id: 'BUGOYNES_KONGEKRABBE',
     text: {
-      no: 'Hvilket dyr er Bugøynes spesielt kjent for i moderne tid?',
+      no: 'Hvilket dyr er Bugøynes spesielt kjent for i dag?',
       en: 'Which animal is Bugøynes especially known for today?'
     },
     options: {
