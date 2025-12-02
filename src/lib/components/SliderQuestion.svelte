@@ -178,7 +178,7 @@
           step={step}
           bind:value
           disabled={finished}
-          class="range"
+          class={`range ${finished ? 'range--finished' : ''}`}
           aria-label="slider"
         />
       </div>
@@ -331,30 +331,46 @@
 .range::-moz-range-track { background: transparent; height: 48px; }
 .range::-moz-range-progress { background: transparent; }
 
-/* Default (desktop) – slank, men grei å treffe med mus */
+/* Thumb input-range (default) */
 .range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 36px;
-  outline: 4px solid #389af1;
+  width: 3px;
+  height: 32px;
+  outline: 5px solid #389af1 ;
   background: #389af1;
-  border-radius: 999px;
+  border-radius:3px;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
   box-shadow: 0 3px 6px rgba(0,0,0,.25);
   transition: transform .1s ease;
 }
 
 .range:disabled::-webkit-slider-thumb {
-  outline: 2px solid #616161;
+  outline: 2px solid #616161 ;
   background: #616161;
+  border-radius:3px;
 }
 
+/* --- FIREFOX --- */
 .range::-moz-range-thumb {
-  width: 12px;
-  height: 36px;
+  width: 3px;
+  height: 32px;
   background: #389af1;
-  border-radius: 999px;
-  box-shadow: 0 3px 6px rgba(0,0,0,.25);
-  outline: 4px solid #389af1;
+  border: none;
+  border-radius: 3px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.1s ease;
+  outline: 5px solid #389af1;
+}
+.range:disabled::-moz-range-thumb {
+  background: #616161;
+  outline: 2px solid #616161;
+}
+.range::-moz-range-track {
+  background: transparent;
+  border: none;
 }
 
 /* TOUCH / MOBIL: mye større tommel (bedre å treffe) */
@@ -379,11 +395,6 @@
     height: 48px;
     outline-width: 6px;
   }
-}
-
-.range:disabled::-moz-range-thumb {
-  background: #616161;
-  outline: 2px solid #616161;
 }
 
 /* Neste-knapp */
@@ -473,5 +484,18 @@
   font-size: 1.2rem;
   font-weight: 800;
   color: #203a66;
+}
+
+/* 👇 NYTT: gjør slider-pin smalere når finished */
+.range.range--finished:disabled::-webkit-slider-thumb {
+  width: 6px;
+  height: 28px;
+  outline-width: 2px;
+}
+
+.range.range--finished:disabled::-moz-range-thumb {
+  width: 6px;
+  height: 28px;
+  outline-width: 2px;
 }
 </style>
