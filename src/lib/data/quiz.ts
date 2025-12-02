@@ -68,6 +68,24 @@ export type Step =
 
 export const steps: Step[] = [
 
+      {
+    type: 'slider',
+    id: 'KALDEST',
+    text: {
+      no: 'Januar er den kaldeste måneden i Kirkenes. Hva er normaltemperaturen for januar?',
+      en: 'January is the coldest month in Kirkenes. What is theaverage temperature for January?'
+    },
+    min: -30,
+    max: 30,
+    step:1,
+    start: 0,
+    correct: -10,
+    scoreRange: 3,
+    prefix: '°C',
+    maxTime: 60,
+    maxPoint: 100
+  },
+
   {
     type: 'video',
     id: 'VIDOE-KIRKENES',
@@ -146,23 +164,21 @@ export const steps: Step[] = [
     minPoint: 50
   },
 
-    {
-    type: 'slider',
-    id: 'KALDEST',
-    text: {
-      no: 'Januar er den kaldeste måneden i Kirkenes. Hva er normaltemperaturen for januar?',
-      en: 'January is the coldest month in Kirkenes. What is theaverage temperature for January?'
-    },
-    min: -30,
-    max: 30,
-    step:1,
-    start: 0,
-    correct: -10,
-    scoreRange: 3,
-    prefix: '°C',
-    maxTime: 60,
-    maxPoint: 100
-  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   {
     type: 'mcq',
