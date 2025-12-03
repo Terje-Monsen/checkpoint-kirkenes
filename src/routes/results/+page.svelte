@@ -18,38 +18,31 @@
     $dict[key] ?? ($lang === 'en' ? en : no);
 
   onMount(async () => {
-    try {
-      // 1) Prøv å hente fra Supabase via API-et
-      const res = await fetch('/api/scores');
-      console.log('GET /api/scores status:', res.status);
+  try {
+    // 1) Prøv å hente fra Supabase via API-et
+    const res = await fetch('/api/scores');
+    console.log('GET /api/scores status:', res.status);
 
-      if (res.ok) {
-        const data = (await res.json()) as Row[];
-        console.log('Supabase leaderboard:', data);
+    if (res.ok) {
+      const data = (await res.json()) as Row[];
+      console.log('Supabase leaderboard:', data);
 
-        if (data && data.length > 0) {
-          board = data;
-          return;
-        }
-      } else {
-        const txt = await res.text();
-        console.error('Feil fra /api/scores:', res.status, txt);
+      if (data && data.length > 0) {
+        board = data;
+        return;              // ← HER!
       }
-    } catch (err) {
-      console.error('Nettverksfeil mot /api/scores:', err);
-    }
-
-    // 2) Fallback: bruk lokal board om API ikke gir noe
-    const localBoard = loadBoard();
-    if (localBoard && localBoard.length > 0) {
-      console.log('Bruker lokal leaderboard som fallback:', localBoard);
-      board = localBoard;
     } else {
-      error = null; // ingen feil, bare tom liste
+      const txt = await res.text();
+      console.error('Feil fra /api/scores:', res.status, txt);
     }
+  } catch (err) {
+    console.error('Nettverksfeil mot /api/scores:', err);
+  }
 
-    loading = false;
-  });
+  // ...
+  loading = false;
+});
+
 </script>
 
 <div class="hero" style="--hero-bg:url('/images/bakgrunn-forside.png')">
