@@ -99,7 +99,7 @@ export const steps: Step[] = [
   random: true,
   maxTime: 30,
   maxPoint: 100,
-  minPoint: 50
+  minPoint: 20
 },
 
 
@@ -120,7 +120,7 @@ export const steps: Step[] = [
     random: false,
     maxTime: 30,
     maxPoint: 100,
-    minPoint: 50
+    minPoint: 20
   },
 
   {
@@ -169,7 +169,7 @@ export const steps: Step[] = [
     correct: { no: 'Nord', en: 'North' },
     maxTime: 15,
     maxPoint: 100,
-    minPoint: 50
+    minPoint: 20
   },
 
 
@@ -222,7 +222,7 @@ export const steps: Step[] = [
     random: false,
     maxTime: 30,
     maxPoint: 100,
-    minPoint: 50
+    minPoint: 20
   },
 
   
@@ -250,7 +250,8 @@ export const steps: Step[] = [
   correct: { no: 'Mehamn', en: 'Mehamn' },
   random: true,
   maxTime: 30,
-  maxPoint: 100
+  maxPoint: 100,
+  minPoint: 20
 },
   
   {
@@ -289,7 +290,7 @@ export const steps: Step[] = [
   correct: { no: 'Øst', en: 'East' },
   maxTime: 15,
   maxPoint: 100,
-  minPoint: 50
+  minPoint: 20
 },
 
 
@@ -312,7 +313,7 @@ export const steps: Step[] = [
   random: false,
   maxTime: 30,
   maxPoint: 100,
-  minPoint: 50
+  minPoint: 20
 },
 
   {
@@ -330,7 +331,7 @@ export const steps: Step[] = [
   random: false,
   maxTime: 30,
   maxPoint: 100,
-  minPoint: 50
+  minPoint: 20
 }, 
 
 
@@ -350,8 +351,8 @@ export const steps: Step[] = [
     correct: { no: ['Aurora Australis'], en: ['Aurora Australis'] },
     random: false,
     maxTime: 30,
-    maxPoint: 50,
-    minPoint: 50
+    maxPoint: 100,
+    minPoint: 20
   },
 
 
@@ -387,12 +388,8 @@ export const steps: Step[] = [
     random: true,
     maxTime: 30,
     maxPoint: 100,
-    minPoint: 50
+    minPoint: 20
   },
-
-
-
-
 
 
 
