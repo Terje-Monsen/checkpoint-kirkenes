@@ -17,31 +17,29 @@
   const t = (key: string, en: string, no: string) =>
     $dict[key] ?? ($lang === 'en' ? en : no);
 
-  onMount(async () => {
+onMount(async () => {
   try {
-    // 1) Prøv å hente fra Supabase via API-et
     const res = await fetch('/api/scores');
     console.log('GET /api/scores status:', res.status);
 
-    if (res.ok) {
-      const data = (await res.json()) as Row[];
-      console.log('Supabase leaderboard:', data);
-
-      if (data && data.length > 0) {
-        board = data;
-        return;              // ← HER!
-      }
-    } else {
+    if (!res.ok) {
       const txt = await res.text();
       console.error('Feil fra /api/scores:', res.status, txt);
+      error = 'Kunne ikke hente resultater.';
+      return;
     }
+
+    const data = (await res.json()) as Row[];
+    console.log('Supabase leaderboard:', data);
+    board = data;
   } catch (err) {
     console.error('Nettverksfeil mot /api/scores:', err);
+    error = 'Kunne ikke hente resultater.';
+  } finally {
+    loading = false;   // ⬅️ kjører ALLTID til slutt
   }
-
-  // ...
-  loading = false;
 });
+
 
 </script>
 
