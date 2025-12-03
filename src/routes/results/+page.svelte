@@ -9,26 +9,67 @@
   type Row = { name: string; score: number; at?: string };
 
   let board: Row[] = [];
+  let loading = true;
+  let error: string | null = null;
+
   $: top10 = board.slice(0, 10);
 
   const t = (key: string, en: string, no: string) =>
     $dict[key] ?? ($lang === 'en' ? en : no);
 
-  onMount(() => {
-    board = loadBoard();
+  onMount(async () => {
+    try {
+      // 1) Prøv å hente fra Supabase via API-et
+      const res = await fetch('/api/scores');
+      console.log('GET /api/scores status:', res.status);
+
+      if (res.ok) {
+        const data = (await res.json()) as Row[];
+        console.log('Supabase leaderboard:', data);
+
+        if (data && data.length > 0) {
+          board = data;
+          return;
+        }
+      } else {
+        const txt = await res.text();
+        console.error('Feil fra /api/scores:', res.status, txt);
+      }
+    } catch (err) {
+      console.error('Nettverksfeil mot /api/scores:', err);
+    }
+
+    // 2) Fallback: bruk lokal board om API ikke gir noe
+    const localBoard = loadBoard();
+    if (localBoard && localBoard.length > 0) {
+      console.log('Bruker lokal leaderboard som fallback:', localBoard);
+      board = localBoard;
+    } else {
+      error = null; // ingen feil, bare tom liste
+    }
+
+    loading = false;
   });
-  
 </script>
 
-<!-- Samme bakgrunn som forsiden -->
 <div class="hero" style="--hero-bg:url('/images/bakgrunn-forside.png')">
   <main class="content">
     <div class="card">
       <div class="badge">🎖️</div>
       <h2 class="title">{t('results.title', 'Leaderboard', 'Resultatliste')}</h2>
 
-      {#if top10.length === 0}
-        <div class="empty">{t('results.empty', 'No results yet.', 'Ingen resultater ennå.')}</div>
+      {#if loading}
+        <div class="empty">
+          {t('results.loading', 'Loading results…', 'Laster resultater…')}
+        </div>
+      {:else if error}
+        <div class="empty">
+          {t('results.error', 'Could not load results.', 'Kunne ikke hente resultater.')}
+        </div>
+      {:else if top10.length === 0}
+        <div class="empty">
+          {t('results.empty', 'No results yet.', 'Ingen resultater ennå.')}
+        </div>
       {:else}
         <ol class="list">
           {#each top10 as e, i}
@@ -45,7 +86,11 @@
       {/if}
 
       <nav class="actions">
-        <a href="/" class="home-btn" aria-label={t('results.home', 'Back to home', 'Tilbake til forsiden')}>
+        <a
+          href="/"
+          class="home-btn"
+          aria-label={t('results.home', 'Back to home', 'Tilbake til forsiden')}
+        >
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <path d="M12 3 3 11h2v8h6v-5h2v5h6v-8h2z" fill="currentColor"/>
           </svg>
@@ -53,7 +98,6 @@
         </a>
       </nav>
     </div>
-
   </main>
 </div>
 
