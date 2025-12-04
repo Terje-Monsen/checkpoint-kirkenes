@@ -143,7 +143,7 @@ export const steps: Step[] = [
     type: 'hotspot',
     id: 'HVOR-ER-KIRKENES',
     text: {
-      no: 'Hvor er på kartet finner du Kirkenes?',
+      no: 'Hvor på kartet finner du Kirkenes?',
       en: 'Where is Kirkenes on the map?'
     },
     image: '/images/map-finnmark.png',
@@ -314,23 +314,28 @@ export const steps: Step[] = [
   minPoint: 20
 },
 
-  {
-  type: 'mcq',
-  id: 'MIDNATTSOL',
+
+
+{
+  type: 'truefalse',
+  id: 'MIDNATTSOL-SAMME-SOL',
   text: {
-    no: 'I hvilke måneder kan du oppleve midnattsolen i Kirkenes?',
-    en: 'During which months can you experience the Midnight Sun in Kirkenes?'
+    no: 'Midnattssolen du ser om natten er den samme solen som du ser på dagtid.',
+    en: 'The Midnight Sun you see at night is the same sun you see during the day.'
   },
   options: {
-    no: ['Sep. – Okt.', 'Nov. – Des.', 'Mai – Jul.', 'Jan. – Mar.'],
-    en: ['Sep. – Oct.', 'Nov. – Dec.', 'May – Jul.', 'Jan. – Mar.']
+    no: ['Fleip', 'Fakta'],
+    en: ['False', 'True']
   },
-  correct: { no: ['Mai – Jul.'], en: ['May – Jul.'] },
-  random: false,
-  maxTime: 30,
+  correct: { 
+    no: 'Fakta', 
+    en: 'True' 
+  },
+  maxTime: 20,
   maxPoint: 100,
   minPoint: 20
-}, 
+},
+
 
 
 
