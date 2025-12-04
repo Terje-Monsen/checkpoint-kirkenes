@@ -320,7 +320,7 @@ export const steps: Step[] = [
   type: 'truefalse',
   id: 'MIDNATTSOL-SAMME-SOL',
   text: {
-    no: 'Midnattssolen du ser om natten er den samme solen som du ser på dagtid.',
+    no: 'Midnattssolen du ser om natten er den samme solen du ser på dagtid.',
     en: 'The Midnight Sun you see at night is the same sun you see during the day.'
   },
   options: {
