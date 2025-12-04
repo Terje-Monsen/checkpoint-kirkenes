@@ -67,8 +67,6 @@ export type Step =
     };
 
 export const steps: Step[] = [
-    
-
 
 
   {
@@ -125,21 +123,21 @@ export const steps: Step[] = [
 
   {
     type: 'slider',
-    id: 'TIL-TROMSØ',
+    id: 'TIL-ROMA',
     text: {
-      no: 'Du er nå kun 13 km fra Kirkenes, men hvor langt er det å kjøre til Tromsø?',
-      en: 'You’re now only 13 km from Kirkenes, but how far is it to drive to Tromsø?'
-    },
-    min: 0,
-    max: 1000,
-    step:10,
-    start: 500,
-    correct: 780,
-    scoreRange: 50,
-    prefix: 'km',
-    maxTime: 60,
-    maxPoint: 100
+      no: 'Hvor langt er du nå fra Roma?',
+      en: 'How far are you now from Rome?'
   },
+  min: 0,
+  max: 5000,
+  step: 20,
+  start: 2500,
+  correct: 4140,
+  scoreRange: 400,
+  prefix: 'km',
+  maxTime: 60,
+  maxPoint: 100
+},
 
   {
     type: 'hotspot',
