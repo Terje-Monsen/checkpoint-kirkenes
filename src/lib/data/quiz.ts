@@ -211,7 +211,7 @@ export const steps: Step[] = [
     },
     options: {
       no: ['Vår', 'Sommer', 'Høst', 'Vinter'],
-      en: ['Spring', 'Summer', 'Autumn/Fall', 'Winter']
+      en: ['Spring', 'Summer', 'Autumn', 'Winter']
     },
     correct: { 
       no: ['Vinter'], 
